@@ -8,18 +8,18 @@ import { NasaService } from './service/nasa.service';
 })
 export class AppComponent implements OnInit {
   title: string = 'angular-quest-12';
-  
-  imgOfTheDay: string = '';
 
-  constructor(private nasaService: NasaService) {}
+  imgOfTheDay: any;
 
-  ngOnInit() {
+  constructor(private nasaService: NasaService) { }
+
+  ngOnInit(): void {
     this.getNasaImage();
   }
 
-  getNasaImage() {
-    this.nasaService.getImageOfTheDay().subscribe((url: string) => {
-      this.imgOfTheDay = url;
+  getNasaImage(): void {
+    this.nasaService.getImageOfTheDay().subscribe(response => {
+      this.imgOfTheDay = response;
     });
   }
 }

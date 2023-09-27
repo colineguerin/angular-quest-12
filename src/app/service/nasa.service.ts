@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,6 @@ export class NasaService {
 
   getImageOfTheDay(): Observable<string> {
     const url = `https://api.nasa.gov/planetary/apod?api_key=${this.apiKey}`;
-    return this.http.get(url).pipe(map((response: any) => response.url));
+    return this.http.get<string>(url);
   }
 }
